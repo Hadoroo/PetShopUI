@@ -1,11 +1,17 @@
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import Karyawan.*;
 
 public class Login extends javax.swing.JFrame {
 
@@ -145,30 +151,25 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-
+    
         String username = jTextField1.getText();
         String password = new String(jPasswordField1.getPassword());
     
         try {
-            boolean loginSuccessful = checkLogin(username, password);
+            Accounts account = getAccounts(username, password);
     
-            if (loginSuccessful) {
+            if (account != null) {
                 // Username and password are correct
-
                 JOptionPane.showMessageDialog(this, "Login Successful!");
-                if (checkJob(username, password).equals("Admin")){
-                    System.out.println("admin");
+                System.out.println(account.getKaryawan() instanceof DokterHewan);
+                if (account.getKaryawan() instanceof Admin) {
                     Admincoy admin = new Admincoy();
-                    
                     admin.setVisible(true);
                     this.setVisible(false);
-                }else if(checkJob(username, password).equals("Dokter Hewan") || checkJob(username, password).equals("Groomer")){
-                    System.out.println("dng");
-                    DokterandGroomer DnG = new DokterandGroomer();
+                } else if (account.getKaryawan() instanceof DokterHewan || account.getKaryawan() instanceof Groomer) {
+                    DokterandGroomer DnG = new DokterandGroomer(account);
                     DnG.setVisible(true);
                     this.setVisible(false);
-                }else if(checkJob(username, password).equals(null)){
-                    loginSuccessful = false;
                 }
             } else {
                 // Username and password are incorrect
@@ -182,7 +183,32 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "An error occurred during login. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    private Accounts getAccounts(String username, String password) throws NoSuchAlgorithmException, IOException {
+        Map<String, Accounts> accounts = loadAccountsFromFile();
+        Accounts account = accounts.get(username);
     
+        if (account != null && verifyPassword(password, account.getPassword())) {
+            return account; // Account found
+        }
+    
+        return null; // Account not found
+    }
+    
+    private Map<String, Accounts> loadAccountsFromFile() throws IOException {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Accounts.dat"))) {
+            return (Map<String, Accounts>) ois.readObject();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return new HashMap<>();
+    }
+    
+    private boolean verifyPassword(String password, String storedPassword) throws NoSuchAlgorithmException {
+        String hashedPassword = RegisterForm.getHashedPassword(password);
+        return hashedPassword.equals(storedPassword);
+    }
+
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here for the "register" label
         // Implement the action to be taken when the "register" label is clicked
@@ -191,51 +217,6 @@ public class Login extends javax.swing.JFrame {
         this.setVisible(false);
     }
 
-    private boolean checkLogin(String username, String password) throws NoSuchAlgorithmException, IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader("Accounts.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.startsWith("Username: ")) {
-                    String storedUsername = line.substring("Username: ".length());
-    
-                    // Read the next line containing the password
-                    String storedPassword = reader.readLine().substring("Password: ".length());
-    
-                    // Check if the provided username and password match the stored account information
-                    if (storedUsername.equals(username) && verifyPassword(password, storedPassword)) {
-                        return true; // Login successful
-                    }
-                }
-            }
-        }
-        return false; // Login unsuccessful
-    }
-
-    private String checkJob(String username, String password) throws NoSuchAlgorithmException, IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader("Accounts.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.startsWith("Username: ")) {
-                    String storedUsername = line.substring("Username: ".length());
-    
-                    // Read the next line containing the password
-                    String storedPassword = reader.readLine().substring("Password: ".length());
-                    String storedJob = reader.readLine().substring("Job: ".length());
-                    // Check if the provided username and password match the stored account information
-
-                    if (storedUsername.equals(username) && verifyPassword(password, storedPassword)) {
-                        return storedJob;
-                    }
-                }
-            }
-        }
-        return null; // Login unsuccessful
-    }
-    
-    private boolean verifyPassword(String password, String storedPassword) throws NoSuchAlgorithmException {
-        String hashedPassword = RegisterForm.getHashedPassword(password);
-        return hashedPassword.equals(storedPassword);
-    }
 
     /**
      * @param args the command line arguments
