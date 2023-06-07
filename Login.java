@@ -1,6 +1,11 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
@@ -137,24 +142,62 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
+
         String username = jTextField1.getText();
-        String password = jPasswordField1.getText();
-
-        if (username.equals("123") && password.equals("123")) {
-            jPanel1.setVisible(false);
-            // MainMenu mainMenu = new MainMenu();
-            // mainMenu.setVisible(true);
-            NewJFrame jf = new NewJFrame();
-            jf.setVisible(true);
-            this.setVisible(false);
+        String password = new String(jPasswordField1.getPassword());
+    
+        try {
+            boolean loginSuccessful = checkLogin(username, password);
+    
+            if (loginSuccessful) {
+                // Username and password are correct
+                JOptionPane.showMessageDialog(this, "Login Successful!");
+                // Proceed with further actions, such as opening the main menu
+                NewJFrame jf = new NewJFrame();
+                jf.setVisible(true);
+                this.setVisible(false);
+            } else {
+                // Username and password are incorrect
+                JOptionPane.showMessageDialog(this, "Invalid username or password.", "Error", JOptionPane.ERROR_MESSAGE);
+                // Clear the input fields
+                jTextField1.setText("");
+                jPasswordField1.setText("");
+            }
+        } catch (NoSuchAlgorithmException | IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "An error occurred during login. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
     }
     
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here for the "register" label
         // Implement the action to be taken when the "register" label is clicked
         }
+
+    private boolean checkLogin(String username, String password) throws NoSuchAlgorithmException, IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Accounts.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("Username: ")) {
+                    String storedUsername = line.substring("Username: ".length());
+    
+                    // Read the next line containing the password
+                    String storedPassword = reader.readLine().substring("Password: ".length());
+    
+                    // Check if the provided username and password match the stored account information
+                    if (storedUsername.equals(username) && verifyPassword(password, storedPassword)) {
+                        return true; // Login successful
+                    }
+                }
+            }
+        }
+        return false; // Login unsuccessful
+    }
+    
+    private boolean verifyPassword(String password, String storedPassword) throws NoSuchAlgorithmException {
+        String hashedPassword = RegisterForm.getHashedPassword(password);
+        return hashedPassword.equals(storedPassword);
+    }
 
     /**
      * @param args the command line arguments

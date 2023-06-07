@@ -1,3 +1,8 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import javax.swing.*;
 
 public class RegisterForm extends javax.swing.JFrame {
@@ -116,29 +121,67 @@ public class RegisterForm extends javax.swing.JFrame {
         String username = jTextField1.getText();
         String password = new String(jPasswordField1.getPassword());
         String confirmPassword = new String(jPasswordField2.getPassword());
-
+    
         if (password.equals(confirmPassword)) {
             // Passwords match, proceed with registration logic
-
-            // Process the registration information
-
-            // Display a message or perform necessary actions after successful registration
-            JOptionPane.showMessageDialog(this, "Registration Successful!");
-
-            // Clear the input fields
-            jTextField1.setText("");
-            jPasswordField1.setText("");
-            jPasswordField2.setText("");
+    
+            try {
+                // Generate hash of the password
+                String hashedPassword = getHashedPassword(password);
+    
+                // Save the registered account to a file
+                saveAccountToFile(username, hashedPassword);
+    
+                // Display a message or perform necessary actions after successful registration
+                JOptionPane.showMessageDialog(this, "Registration Successful!");
+    
+                // Clear the input fields
+                jTextField1.setText("");
+                jPasswordField1.setText("");
+                jPasswordField2.setText("");
+            } catch (NoSuchAlgorithmException | IOException e) {
+                ((Throwable) e).printStackTrace();
+                JOptionPane.showMessageDialog(this, "An error occurred during registration. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
             // Passwords don't match, display an error message
             JOptionPane.showMessageDialog(this, "Passwords do not match. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-            
+    
             // Clear the password fields
             jPasswordField1.setText("");
             jPasswordField2.setText("");
         }
     }
-
+    
+    public static String getHashedPassword(String password) throws NoSuchAlgorithmException {
+        try {
+            // Create MessageDigest instance for SHA-256
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+    
+            // Add password bytes to digest
+            md.update(password.getBytes());
+    
+            // Get the hash's bytes
+            byte[] hashedBytes = md.digest();
+    
+            // Convert the byte array to a hexadecimal string representation
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashedBytes) {
+                sb.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw e;
+        }
+    }
+    
+    private void saveAccountToFile(String username, String hashedPassword) throws IOException {
+        try (FileWriter writer = new FileWriter("Accounts.txt", true)) {
+            writer.write("Username: " + username + "\n");
+            writer.write("Password: " + hashedPassword + "\n");
+            writer.write("\n");
+        }
+    }
     public static void main(String args[]) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
