@@ -72,7 +72,8 @@ public class NextRegister extends javax.swing.JFrame {
         } else if (tipeKaryawan.equals("Groomer")) {
             jLabel7.setText("Biaya Perawatan");
         } else {
-            jLabel7.setText("Ini bug cuyy");
+            jLabel7.setVisible(false);  // Hide jLabel7
+            jTextField5.setVisible(false);  // Hide jTextField5
         }
         
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Pilih>", "Laki-Laki", "Perempuan" }));
@@ -182,7 +183,10 @@ public class NextRegister extends javax.swing.JFrame {
         String telepon = jTextField3.getText();
         String jenisKelamin = (String) jComboBox1.getSelectedItem();
         int gaji = Integer.parseInt(jTextField4.getText().trim());
-        int biaya = Integer.parseInt(jTextField5.getText().trim());
+        int biaya = 0;
+        if (jLabel7.isVisible()) {
+            biaya = Integer.parseInt(jTextField5.getText().trim());
+        }
 
         if (jLabel7.getText().equals("Biaya Periksa")) {
             rg.karyawan = new DokterHewan(nama, alamat, telepon, jenisKelamin, "Dokter Hewan", gaji, biaya);
