@@ -187,9 +187,7 @@ public class RegisterForm extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Username already exists. Please choose a different username.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-    
 
-    
                 // Clear the input fields
                 jTextField1.setText("");
                 jPasswordField1.setText("");
