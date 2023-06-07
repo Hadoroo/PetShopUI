@@ -185,25 +185,25 @@ public class DokterandGroomer extends javax.swing.JFrame {
         jMenu1.setText("Menu");
 
         jMenu2.setText("Absen");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
             }
         });
         jMenu1.add(jMenu2);
-
+        
         jMenu3.setText("Daftar Pasien");
-        jMenu3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3ActionPerformed(evt);
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
             }
         });
         jMenu1.add(jMenu3);
 
-        jMenu4.setText("LogOut");
-        jMenu4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu4ActionPerformed(evt);
+        jMenu4.setText("Log Out");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
             }
         });
         jMenu1.add(jMenu4);
@@ -232,17 +232,21 @@ public class DokterandGroomer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {                                       
+         
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {                                       
         // TODO add your handling code here:
-    }                                      
+    }                 
+        
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {                                       
+        // TODO add your handling code here:
+    }                 
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        // TODO add your handling code here:
-    }                                      
-
-    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        // TODO add your handling code here:
-    }                                      
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {
+        // Add your code here for jMenu4 actionPerformed
+        Login lg = new Login();
+        lg.setVisible(true);
+        this.setVisible(false);
+    }
 
     /**
      * @param args the command line arguments
