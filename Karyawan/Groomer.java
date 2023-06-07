@@ -12,11 +12,12 @@ public class Groomer extends Karyawan {
         this.biayaPerawatan = biayaPerawatan;
     }
 
-    public float getBiayaPerawatan() {
+    @Override
+    public float getBiaya() {
         return biayaPerawatan;
     }
 
-    public void setBiayaPerawatan(float biayaPerawatan) {
+    public void setBiaya(float biayaPerawatan) {
         this.biayaPerawatan = biayaPerawatan;
     }
 

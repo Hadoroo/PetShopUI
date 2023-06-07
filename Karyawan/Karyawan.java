@@ -1,6 +1,8 @@
 package Karyawan;
 
-public class Karyawan {
+import java.io.Serializable;
+
+public class Karyawan implements Serializable{
     private String nama;
     private String alamat;
     private String telepon;
@@ -66,5 +68,9 @@ public class Karyawan {
 
     public void setGaji(int gaji) {
         this.gaji = gaji;
-    }                              
+    }                          
+    
+    public float getBiaya(){
+        return 0;
+    }
 }

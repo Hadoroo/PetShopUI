@@ -3,17 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.io.IOException;
+import java.util.Map;
+
+import javax.swing.JOptionPane;
+
+import Karyawan.*;
+
 /**
  *
  * @author win11
  */
 public class NextRegister extends javax.swing.JFrame {
-
+    RegisterForm rg;
     /**
      * Creates new form NextRegister
      */
-    public NextRegister() {
-        initComponents();
+    public NextRegister(String tipeKaryawan, RegisterForm rg) {
+        this.rg = rg;
+        initComponents(tipeKaryawan);
     }
 
     /**
@@ -23,7 +31,7 @@ public class NextRegister extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+    private void initComponents(String tipeKaryawan) {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -59,14 +67,25 @@ public class NextRegister extends javax.swing.JFrame {
 
         jLabel6.setText("Gaji");
 
-        jLabel7.setText("Biaya Perawatan");
-
+        if (tipeKaryawan.equals("Dokter Hewan")) {
+            jLabel7.setText("Biaya Periksa");
+        } else if (tipeKaryawan.equals("Groomer")) {
+            jLabel7.setText("Biaya Perawatan");
+        } else {
+            jLabel7.setText("Ini bug cuyy");
+        }
+        
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Pilih>", "Laki-Laki", "Perempuan" }));
 
         jButton1.setText("REGISTER");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                try {
+                    jButton1ActionPerformed(evt);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -156,9 +175,42 @@ public class NextRegister extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                         
         // TODO add your handling code here:
-    }                                        
+        String nama = jTextField1.getText();
+        String alamat = jTextField2.getText();
+        String telepon = jTextField3.getText();
+        String jenisKelamin = (String) jComboBox1.getSelectedItem();
+        int gaji = Integer.parseInt(jTextField4.getText().trim());
+        int biaya = Integer.parseInt(jTextField5.getText().trim());
+
+        if (jLabel7.getText().equals("Biaya Periksa")) {
+            rg.karyawan = new DokterHewan(nama, alamat, telepon, jenisKelamin, "Dokter Hewan", gaji, biaya);
+        } else if (jLabel7.getText().equals("Biaya Perawatan")) {
+            rg.karyawan = new Groomer(nama, alamat, telepon, jenisKelamin, "Groomer", gaji, biaya);
+        } else {
+            rg.karyawan = new Admin(nama, alamat, telepon, jenisKelamin, "Admin", gaji);
+        }
+
+        // Load existing accounts from the file
+        Map<String, Accounts> accounts = rg.loadAccountsFromFile();
+
+        // Create an Accounts object
+        Accounts account = new Accounts(rg.username, rg.hashedPassword, rg.karyawan);
+
+        // Add the new account to the accounts HashMap
+        accounts.put(rg.username, account);
+
+        // Save the updated accounts HashMap to the file
+        rg.saveAccountsToFile(accounts);
+
+        // Display a message or perform necessary actions after successful registration
+        JOptionPane.showMessageDialog(this, "Registration Successful!");
+
+        Login lg = new Login();
+        lg.setVisible(true);
+        this.setVisible(false);
+    }
 
     /**
      * @param args the command line arguments
@@ -188,11 +240,11 @@ public class NextRegister extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new NextRegister().setVisible(true);
-            }
-        });
+        // java.awt.EventQueue.invokeLater(new Runnable() {
+        //     public void run() {
+        //         new NextRegister().setVisible(true);
+        //     }
+        // });
     }
 
     // Variables declaration - do not modify                     

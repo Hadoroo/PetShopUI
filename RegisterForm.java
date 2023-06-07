@@ -1,7 +1,13 @@
 import java.io.BufferedReader;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -10,6 +16,11 @@ import java.awt.Color;
 
 
 import javax.swing.*;
+
+import Karyawan.Admin;
+import Karyawan.DokterHewan;
+import Karyawan.Groomer;
+import Karyawan.Karyawan;
 
 public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
@@ -23,12 +34,18 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
+    Karyawan karyawan;
+    String username;
+    String password;
+    String hashedPassword;
+    String tipeKaryawan;
 
     public RegisterForm() {
         initComponents();
     }
 
     private void initComponents() {
+    
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -90,7 +107,7 @@ public class RegisterForm extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                         .addComponent(jPasswordField1)
                         .addComponent(jPasswordField2)
-                        .addComponent(jComboBox1)) // Add the JComboBox
+                        .addComponent(jComboBox1))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -113,7 +130,7 @@ public class RegisterForm extends javax.swing.JFrame {
                     .addGap(18, 18, 18)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jComboBox1)
-                        .addComponent(jLabel5)) // Add the new label
+                        .addComponent(jLabel5))
                     .addGap(18, 18, 18)
                     .addComponent(jButton1)
                     .addGap(64, 64, 64))
@@ -135,17 +152,25 @@ public class RegisterForm extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap())
         );
-
         pack();
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        String username = jTextField1.getText();
-        String password = new String(jPasswordField1.getPassword());
-        String confirmPassword = new String(jPasswordField2.getPassword());
-        String job = (String) jComboBox1.getSelectedItem();
+        String confirmPassword;
+        username = jTextField1.getText();
+        password = new String(jPasswordField1.getPassword());
+        confirmPassword = new String(jPasswordField2.getPassword());
+        tipeKaryawan = (String) jComboBox1.getSelectedItem();
+        
+        if (tipeKaryawan.equals("Dokter Hewan")) {
+            karyawan = new DokterHewan();
+        } else if (tipeKaryawan.equals("Groomer")) {
+            karyawan = new Groomer();
+        } else {
+            karyawan = new Admin();
+        }
     
-        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || job.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in all the fields.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -155,7 +180,7 @@ public class RegisterForm extends javax.swing.JFrame {
     
             try {
                 // Generate hash of the password
-                String hashedPassword = getHashedPassword(password);
+                hashedPassword = getHashedPassword(password);
     
                 // Check if the username already exists
                 if (isUsernameExists(username)) {
@@ -163,19 +188,15 @@ public class RegisterForm extends javax.swing.JFrame {
                     return;
                 }
     
-                // Save the registered account to a file
-                saveAccountToFile(username, hashedPassword, job);
-    
-                // Display a message or perform necessary actions after successful registration
-                JOptionPane.showMessageDialog(this, "Registration Successful!");
+
     
                 // Clear the input fields
                 jTextField1.setText("");
                 jPasswordField1.setText("");
                 jPasswordField2.setText("");
-    
-                Login lg = new Login();
-                lg.setVisible(true);
+                
+                NextRegister next = new NextRegister( (String) jComboBox1.getSelectedItem(), this);
+                next.setVisible(true);
                 this.setVisible(false);
             } catch (NoSuchAlgorithmException | IOException e) {
                 e.printStackTrace();
@@ -191,39 +212,24 @@ public class RegisterForm extends javax.swing.JFrame {
         }
     }
     
-    private boolean isUsernameExists(String username) throws IOException {
-        Map<String, String> accounts = loadAccountsFromFile();
+    protected boolean isUsernameExists(String username) throws IOException {
+        Map<String, Accounts> accounts = loadAccountsFromFile();
     
         return accounts.containsKey(username);
     }
     
-    private Map<String, String> loadAccountsFromFile() throws IOException {
-        Map<String, String> accounts = new HashMap<>();
-    
-        try (BufferedReader reader = new BufferedReader(new FileReader("Accounts.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.startsWith("Username: ")) {
-                    String storedUsername = line.substring("Username: ".length());
-    
-                    // Read the next line containing the password
-                    String storedPassword = reader.readLine().substring("Password: ".length());
-
-    
-                    accounts.put(storedUsername, storedPassword);
-                }
-            }
+    protected Map<String, Accounts> loadAccountsFromFile() throws IOException {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Accounts.dat"))) {
+            return (Map<String, Accounts>) ois.readObject();
+        } catch (EOFException | ClassNotFoundException | FileNotFoundException e) {
+            // If the file is empty or not found, return an empty HashMap
+            return new HashMap<>();
         }
-    
-        return accounts;
     }
     
-    private void saveAccountToFile(String username, String hashedPassword, String job) throws IOException {
-        try (FileWriter writer = new FileWriter("Accounts.txt", true)) {
-            writer.write("Username: " + username + "\n");
-            writer.write("Password: " + hashedPassword + "\n");
-            writer.write("Job: " + job+ "\n");
-            writer.write("\n");
+    protected void saveAccountsToFile(Map<String, Accounts> accounts) throws IOException {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Accounts.dat"))) {
+            oos.writeObject(accounts);
         }
     }
 
