@@ -189,7 +189,7 @@ public class Login extends javax.swing.JFrame {
         RegisterForm rg = new RegisterForm();
         rg.setVisible(true);
         this.setVisible(false);
-        }
+    }
 
     private boolean checkLogin(String username, String password) throws NoSuchAlgorithmException, IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader("Accounts.txt"))) {
