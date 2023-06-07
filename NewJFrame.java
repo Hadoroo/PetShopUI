@@ -797,12 +797,12 @@ public class NewJFrame extends javax.swing.JFrame {
             jPanel8.setVisible(true);
         }
     
-        String namaHewan = jTextField1.getText();
-        String warnaHewan = jTextField2.getText();
+        namaHewan = jTextField1.getText();
+        warnaHewan = jTextField2.getText();
         System.out.println(namaHewan);
-        String tanggalLahir = jComboBox2.getSelectedItem() + " " + jComboBox3.getSelectedItem() + " " + jComboBox4.getSelectedItem();
-        String species = (String) jComboBox1.getSelectedItem();
-        String ras = jTextField3.getText();
+        tanggalLahir = jComboBox2.getSelectedItem() + " " + jComboBox3.getSelectedItem() + " " + jComboBox4.getSelectedItem();
+        species = (String) jComboBox1.getSelectedItem();
+        ras = jTextField3.getText();
         // System.out.println(warnaHewan);
         // System.out.println(tanggalLahir);
         // System.out.println(species);
@@ -821,7 +821,16 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel4.setVisible(false);
             // MainMenu mainMenu = new MainMenu();
             // mainMenu.setVisible(true);
-            NewJFrame jf = new NewJFrame();
+            Hasil jf = new Hasil();
+            jf.jLabel11.setText("001");
+            jf.jLabel12.setText(namaHewan);
+            jf.jLabel13.setText(warnaHewan);
+            jf.jLabel14.setText(tanggalLahir);
+            jf.jLabel15.setText(species);
+            jf.jLabel16.setText(ras);
+            jf.jLabel17.setText((String)jComboBox7.getSelectedItem());
+            jf.jLabel18.setText("a");
+            jf.jLabel19.setText("0000");
             jf.setVisible(true);
             this.setVisible(false);
     }
@@ -846,9 +855,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel4.setVisible(false);
         jPanel3.setVisible(false);
         jenisPerawatan.removeAll(jenisPerawatan);
-        for (String s : jenisPerawatan) {
-            System.out.println(s);
-        }
     }                                        
 
     private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -929,7 +935,11 @@ public class NewJFrame extends javax.swing.JFrame {
     }
     
     public ArrayList<String> jenisPerawatan = new ArrayList<>();
-
+    String namaHewan;
+    String warnaHewan;
+    String tanggalLahir;
+    String species;
+    String ras;
     /**
      * @param args the command line arguments
      */
