@@ -690,6 +690,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jMenu1.setText("logout");
         jMenuBar1.add(jMenu1);
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
         setJMenuBar(jMenuBar1);
 
@@ -899,7 +904,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jComboBox7ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-        String pilihan = jComboBox7.getName();
     }                                          
 
     private void jComboBox7ItemStateChanged(java.awt.event.ItemEvent evt) {                                            
@@ -933,6 +937,15 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel7.setVisible(false);
         jPanel8.setVisible(false);
     }
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        jPanel1.setVisible(false);
+        Login jf = new Login();
+        jf.setVisible(true);
+        this.setVisible(false);
+
+    }  
     
     public ArrayList<String> jenisPerawatan = new ArrayList<>();
     String namaHewan;
