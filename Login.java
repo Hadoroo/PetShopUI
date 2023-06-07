@@ -159,6 +159,7 @@ public class Login extends javax.swing.JFrame {
                 if (checkJob(username, password).equals("Admin")){
                     System.out.println("admin");
                     Admincoy admin = new Admincoy();
+                    
                     admin.setVisible(true);
                     this.setVisible(false);
                 }else if(checkJob(username, password).equals("Dokter Hewan") || checkJob(username, password).equals("Groomer")){

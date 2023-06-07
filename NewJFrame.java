@@ -688,15 +688,15 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jMenu1.setText("logout");
-        jMenuBar1.add(jMenu1);
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
-            }
-        });
+        // jMenu1.setText("logout");
+        // jMenuBar1.add(jMenu1);
+        // jMenu1.addActionListener(new java.awt.event.ActionListener() {
+        //     public void actionPerformed(java.awt.event.ActionEvent evt) {
+        //         jMenu1ActionPerformed(evt);
+        //     }
+        // });
 
-        setJMenuBar(jMenuBar1);
+        // setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -846,7 +846,9 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        
+        Login log = new Login();
+        this.setVisible(false);
+        log.setVisible(true);
     }                                        
 
     private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {                                           
