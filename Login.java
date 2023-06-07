@@ -172,6 +172,9 @@ public class Login extends javax.swing.JFrame {
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here for the "register" label
         // Implement the action to be taken when the "register" label is clicked
+        RegisterForm rg = new RegisterForm();
+        rg.setVisible(true);
+        this.setVisible(false);
         }
 
     private boolean checkLogin(String username, String password) throws NoSuchAlgorithmException, IOException {

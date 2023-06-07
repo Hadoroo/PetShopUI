@@ -139,6 +139,10 @@ public class RegisterForm extends javax.swing.JFrame {
                 jTextField1.setText("");
                 jPasswordField1.setText("");
                 jPasswordField2.setText("");
+
+                Login lg = new Login();
+                lg.setVisible(true);
+                this.setVisible(false);
             } catch (NoSuchAlgorithmException | IOException e) {
                 ((Throwable) e).printStackTrace();
                 JOptionPane.showMessageDialog(this, "An error occurred during registration. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
