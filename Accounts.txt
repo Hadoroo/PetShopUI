@@ -11,3 +11,6 @@ Password: da70dfa4d9f95ac979f921e8e623358236313f334afcd06cddf8a5621cf6a1e9
 Job: Groomer
 
 
+Username: Hiro
+Password: a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
+

@@ -1,7 +1,11 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.*;
 
@@ -122,12 +126,23 @@ public class RegisterForm extends javax.swing.JFrame {
         String password = new String(jPasswordField1.getPassword());
         String confirmPassword = new String(jPasswordField2.getPassword());
     
+        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in all the fields.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    
         if (password.equals(confirmPassword)) {
             // Passwords match, proceed with registration logic
     
             try {
                 // Generate hash of the password
                 String hashedPassword = getHashedPassword(password);
+    
+                // Check if the username already exists
+                if (isUsernameExists(username)) {
+                    JOptionPane.showMessageDialog(this, "Username already exists. Please choose a different username.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
     
                 // Save the registered account to a file
                 saveAccountToFile(username, hashedPassword);
@@ -139,12 +154,12 @@ public class RegisterForm extends javax.swing.JFrame {
                 jTextField1.setText("");
                 jPasswordField1.setText("");
                 jPasswordField2.setText("");
-
+    
                 Login lg = new Login();
                 lg.setVisible(true);
                 this.setVisible(false);
             } catch (NoSuchAlgorithmException | IOException e) {
-                ((Throwable) e).printStackTrace();
+                e.printStackTrace();
                 JOptionPane.showMessageDialog(this, "An error occurred during registration. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
@@ -157,6 +172,40 @@ public class RegisterForm extends javax.swing.JFrame {
         }
     }
     
+    private boolean isUsernameExists(String username) throws IOException {
+        Map<String, String> accounts = loadAccountsFromFile();
+    
+        return accounts.containsKey(username);
+    }
+    
+    private Map<String, String> loadAccountsFromFile() throws IOException {
+        Map<String, String> accounts = new HashMap<>();
+    
+        try (BufferedReader reader = new BufferedReader(new FileReader("Accounts.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("Username: ")) {
+                    String storedUsername = line.substring("Username: ".length());
+    
+                    // Read the next line containing the password
+                    String storedPassword = reader.readLine().substring("Password: ".length());
+    
+                    accounts.put(storedUsername, storedPassword);
+                }
+            }
+        }
+    
+        return accounts;
+    }
+    
+    private void saveAccountToFile(String username, String hashedPassword) throws IOException {
+        try (FileWriter writer = new FileWriter("Accounts.txt", true)) {
+            writer.write("Username: " + username + "\n");
+            writer.write("Password: " + hashedPassword + "\n");
+            writer.write("\n");
+        }
+    }
+
     public static String getHashedPassword(String password) throws NoSuchAlgorithmException {
         try {
             // Create MessageDigest instance for SHA-256
@@ -178,14 +227,7 @@ public class RegisterForm extends javax.swing.JFrame {
             throw e;
         }
     }
-    
-    private void saveAccountToFile(String username, String hashedPassword) throws IOException {
-        try (FileWriter writer = new FileWriter("Accounts.txt", true)) {
-            writer.write("Username: " + username + "\n");
-            writer.write("Password: " + hashedPassword + "\n");
-            writer.write("\n");
-        }
-    }
+
     public static void main(String args[]) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
