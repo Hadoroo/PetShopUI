@@ -804,7 +804,7 @@ public class NewJFrame extends javax.swing.JFrame {
     
         namaHewan = jTextField1.getText();
         warnaHewan = jTextField2.getText();
-        System.out.println(namaHewan);
+        // System.out.println(namaHewan);
         tanggalLahir = jComboBox2.getSelectedItem() + " " + jComboBox3.getSelectedItem() + " " + jComboBox4.getSelectedItem();
         species = (String) jComboBox1.getSelectedItem();
         ras = jTextField3.getText();
