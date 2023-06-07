@@ -210,6 +210,9 @@ public class Admincoy extends javax.swing.JFrame {
 
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
+        Login lg = new Login();
+        lg.setVisible(true);
+        this.setVisible(false);
     }                                      
 
     /**
