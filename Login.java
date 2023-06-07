@@ -151,9 +151,11 @@ public class Login extends javax.swing.JFrame {
     
             if (loginSuccessful) {
                 // Username and password are correct
+
                 JOptionPane.showMessageDialog(this, "Login Successful!");
                 // Proceed with further actions, such as opening the main menu
                 NewJFrame jf = new NewJFrame();
+                
                 jf.setVisible(true);
                 this.setVisible(false);
             } else {
