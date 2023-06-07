@@ -121,12 +121,8 @@ public class DokterandGroomer extends javax.swing.JFrame {
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel9))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel8))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(41, 41, 41))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -184,12 +180,27 @@ public class DokterandGroomer extends javax.swing.JFrame {
         jMenu1.setText("Menu");
 
         jMenu2.setText("Absen");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenu2);
 
         jMenu3.setText("Daftar Pasien");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenu3);
 
         jMenu4.setText("LogOut");
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenu4);
 
         jMenuBar1.add(jMenu1);
@@ -214,19 +225,19 @@ public class DokterandGroomer extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }// </editor-fold>                        
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        // TODO add your handling code here:
+    }                                      
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
-    }
-    
-    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        // TODO add your handling code here:
-    }                                                                            
+    }                                      
 
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
-    }  
+    }                                      
 
     /**
      * @param args the command line arguments
