@@ -143,8 +143,9 @@ public class RegisterForm extends javax.swing.JFrame {
         String username = jTextField1.getText();
         String password = new String(jPasswordField1.getPassword());
         String confirmPassword = new String(jPasswordField2.getPassword());
+        String job = (String) jComboBox1.getSelectedItem();
     
-        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || job.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in all the fields.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -163,7 +164,7 @@ public class RegisterForm extends javax.swing.JFrame {
                 }
     
                 // Save the registered account to a file
-                saveAccountToFile(username, hashedPassword);
+                saveAccountToFile(username, hashedPassword, job);
     
                 // Display a message or perform necessary actions after successful registration
                 JOptionPane.showMessageDialog(this, "Registration Successful!");
@@ -207,6 +208,7 @@ public class RegisterForm extends javax.swing.JFrame {
     
                     // Read the next line containing the password
                     String storedPassword = reader.readLine().substring("Password: ".length());
+
     
                     accounts.put(storedUsername, storedPassword);
                 }
@@ -216,10 +218,11 @@ public class RegisterForm extends javax.swing.JFrame {
         return accounts;
     }
     
-    private void saveAccountToFile(String username, String hashedPassword) throws IOException {
+    private void saveAccountToFile(String username, String hashedPassword, String job) throws IOException {
         try (FileWriter writer = new FileWriter("Accounts.txt", true)) {
             writer.write("Username: " + username + "\n");
             writer.write("Password: " + hashedPassword + "\n");
+            writer.write("Job: " + job+ "\n");
             writer.write("\n");
         }
     }

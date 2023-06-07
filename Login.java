@@ -156,11 +156,19 @@ public class Login extends javax.swing.JFrame {
                 // Username and password are correct
 
                 JOptionPane.showMessageDialog(this, "Login Successful!");
-                // Proceed with further actions, such as opening the main menu
-                NewJFrame jf = new NewJFrame();
-                
-                jf.setVisible(true);
-                this.setVisible(false);
+                if (checkJob(username, password).equals("Admin")){
+                    System.out.println("admin");
+                    Admincoy admin = new Admincoy();
+                    admin.setVisible(true);
+                    this.setVisible(false);
+                }else if(checkJob(username, password).equals("Dokter Hewan") || checkJob(username, password).equals("Groomer")){
+                    System.out.println("dng");
+                    DokterandGroomer DnG = new DokterandGroomer();
+                    DnG.setVisible(true);
+                    this.setVisible(false);
+                }else if(checkJob(username, password).equals(null)){
+                    loginSuccessful = false;
+                }
             } else {
                 // Username and password are incorrect
                 JOptionPane.showMessageDialog(this, "Invalid username or password.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -200,6 +208,27 @@ public class Login extends javax.swing.JFrame {
             }
         }
         return false; // Login unsuccessful
+    }
+
+    private String checkJob(String username, String password) throws NoSuchAlgorithmException, IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Accounts.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("Username: ")) {
+                    String storedUsername = line.substring("Username: ".length());
+    
+                    // Read the next line containing the password
+                    String storedPassword = reader.readLine().substring("Password: ".length());
+                    String storedJob = reader.readLine().substring("Job: ".length());
+                    // Check if the provided username and password match the stored account information
+
+                    if (storedUsername.equals(username) && verifyPassword(password, storedPassword)) {
+                        return storedJob;
+                    }
+                }
+            }
+        }
+        return null; // Login unsuccessful
     }
     
     private boolean verifyPassword(String password, String storedPassword) throws NoSuchAlgorithmException {
