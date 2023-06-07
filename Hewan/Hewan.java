@@ -57,4 +57,8 @@ public class Hewan {
     public void setSpeciesHewan(String speciesHewan) {
         this.speciesHewan = speciesHewan;
     }
+
+    public String getRas(){
+        return "";
+    }
 }
