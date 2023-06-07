@@ -3,6 +3,15 @@ package Karyawan;
 public class DokterHewan extends Karyawan{
     private float biayaPeriksa;
 
+    @Override
+    public float getBiaya() {
+        return biayaPeriksa;
+    }
+
+    public void setBiayaPeriksa(float biayaPeriksa) {
+        this.biayaPeriksa = biayaPeriksa;
+    }
+
     public DokterHewan(){
     }
 

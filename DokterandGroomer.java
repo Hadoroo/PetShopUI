@@ -7,12 +7,16 @@
  *
  * @author win11
  */
-public class DokterandGroomer extends javax.swing.JFrame {
 
+import java.text.DecimalFormat;
+public class DokterandGroomer extends javax.swing.JFrame {
+    Accounts account;
+    public DecimalFormat df = new DecimalFormat("Rp#,##0.00");
     /**
      * Creates new form DokterandGroomer
      */
-    public DokterandGroomer() {
+    public DokterandGroomer(Accounts account) {
+        this.account = account;
         initComponents();
     }
 
@@ -78,19 +82,19 @@ public class DokterandGroomer extends javax.swing.JFrame {
         jLabel7.setText("Biaya Perawatan");
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setText("jLabel8");
+        jLabel8.setText(account.getKaryawan().getNama());
 
-        jLabel9.setText("jLabel9");
+        jLabel9.setText(account.getKaryawan().getAlamat());
 
-        jLabel10.setText("jLabel10");
+        jLabel10.setText(account.getKaryawan().getTelepon());
 
-        jLabel11.setText("jLabel11");
+        jLabel11.setText(account.getKaryawan().getJenisKelamin());
 
-        jLabel12.setText("jLabel12");
+        jLabel12.setText(account.getKaryawan().getKategoriKaryawan());
 
-        jLabel13.setText("jLabel13");
+        jLabel13.setText(df.format(account.getKaryawan().getGaji()));
 
-        jLabel14.setText("jLabel14");
+        jLabel14.setText(df.format(account.getKaryawan().getBiaya()));
 
         jLabel18.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel18.setText("DATA DIRI");
@@ -98,8 +102,9 @@ public class DokterandGroomer extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel19.setText("HALO! ");
 
+
         jLabel20.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel20.setText("jLabel15");
+        jLabel20.setText(account.getKaryawan().getNama());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -267,11 +272,11 @@ public class DokterandGroomer extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DokterandGroomer().setVisible(true);
-            }
-        });
+        // java.awt.EventQueue.invokeLater(new Runnable() {
+        //     public void run() {
+        //         new DokterandGroomer().setVisible(true);
+        //     }
+        // });
     }
 
     // Variables declaration - do not modify                     
