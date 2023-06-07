@@ -5,8 +5,10 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JButton jButton1;
 
     public RegisterForm() {
@@ -18,8 +20,10 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordField2 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -33,6 +37,8 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel2.setText("USERNAME");
 
         jLabel3.setText("PASSWORD");
+
+        jLabel4.setText("CONFIRM PASSWORD");
 
         jButton1.setText("REGISTER");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -55,11 +61,13 @@ public class RegisterForm extends javax.swing.JFrame {
                     .addGap(69, 69, 69)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                        .addComponent(jPasswordField1))
+                        .addComponent(jPasswordField1)
+                        .addComponent(jPasswordField2))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -76,8 +84,12 @@ public class RegisterForm extends javax.swing.JFrame {
                         .addComponent(jPasswordField1)
                         .addComponent(jLabel3))
                     .addGap(18, 18, 18)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jPasswordField2)
+                        .addComponent(jLabel4))
+                    .addGap(18, 18, 18)
                     .addComponent(jButton1)
-                    .addGap(82, 82, 82))
+                    .addGap(64, 64, 64))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -101,18 +113,30 @@ public class RegisterForm extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO: Implement registration logic here
         String username = jTextField1.getText();
         String password = new String(jPasswordField1.getPassword());
+        String confirmPassword = new String(jPasswordField2.getPassword());
 
-        // Process the registration information
-        
-        // Display a message or perform necessary actions after successful registration
-        JOptionPane.showMessageDialog(this, "Registration Successful!");
+        if (password.equals(confirmPassword)) {
+            // Passwords match, proceed with registration logic
 
-        // Clear the input fields
-        jTextField1.setText("");
-        jPasswordField1.setText("");
+            // Process the registration information
+
+            // Display a message or perform necessary actions after successful registration
+            JOptionPane.showMessageDialog(this, "Registration Successful!");
+
+            // Clear the input fields
+            jTextField1.setText("");
+            jPasswordField1.setText("");
+            jPasswordField2.setText("");
+        } else {
+            // Passwords don't match, display an error message
+            JOptionPane.showMessageDialog(this, "Passwords do not match. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            
+            // Clear the password fields
+            jPasswordField1.setText("");
+            jPasswordField2.setText("");
+        }
     }
 
     public static void main(String args[]) {
