@@ -3,16 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author win11
  */
 public class Admincoy extends javax.swing.JFrame {
-
+    Accounts account;
+    public DecimalFormat df = new DecimalFormat("Rp#,##0.00");
     /**
      * Creates new form Admincoy
      */
-    public Admincoy() {
+    public Admincoy(Accounts account) {
+        this.account = account;
         initComponents();
     }
 
@@ -50,36 +54,37 @@ public class Admincoy extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel4.setText("Jenis Kelamin");
-
-        jLabel5.setText("Kategori");
-
-        jLabel9.setText("jLabel9");
-
-        jLabel6.setText("Gaji");
-
-        jLabel10.setText("jLabel10");
-
-        jLabel11.setText("jLabel11");
-
-        jLabel12.setText("jLabel12");
-
-        jLabel13.setText("jLabel13");
-
         jLabel1.setText("Nama");
 
         jLabel2.setText("Alamat");
 
         jLabel3.setText("Telepon");
 
+        jLabel4.setText("Jenis Kelamin");
+
+        jLabel5.setText("Kategori");
+
+        jLabel6.setText("Gaji");
+
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setText("jLabel8");
+
+        jLabel8.setText(account.getKaryawan().getNama());
+
+        jLabel9.setText(account.getKaryawan().getAlamat());
+
+        jLabel10.setText(account.getKaryawan().getTelepon());
+
+        jLabel11.setText(account.getKaryawan().getJenisKelamin());
+
+        jLabel12.setText(account.getKaryawan().getKategoriKaryawan());
+
+        jLabel13.setText(df.format(account.getKaryawan().getGaji()));
 
         jLabel7.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel7.setText("HALO! ");
 
         jLabel15.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel15.setText("jLabel15");
+        jLabel15.setText(account.getKaryawan().getNama());
 
         jLabel16.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel16.setText("DATA DIRI");
@@ -245,7 +250,7 @@ public class Admincoy extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Admincoy().setVisible(true);
+                new Admincoy(new Accounts()).setVisible(true);
             }
         });
     }

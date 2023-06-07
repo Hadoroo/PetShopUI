@@ -158,7 +158,7 @@ public class Login extends javax.swing.JFrame {
                 // Username and password are correct
                 JOptionPane.showMessageDialog(this, "Login Successful!");
                 if (account.getKaryawan() instanceof Admin) {
-                    Admincoy admin = new Admincoy();
+                    Admincoy admin = new Admincoy(account);
                     admin.setVisible(true);
                     this.setVisible(false);
                 } else if (account.getKaryawan() instanceof DokterHewan || account.getKaryawan() instanceof Groomer) {
