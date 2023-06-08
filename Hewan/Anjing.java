@@ -8,12 +8,11 @@ public class Anjing extends Hewan{
     public Anjing(){
     }
 
-    public Anjing(String noPelanggan, String namaHewan, String warnaHewan, int tahunKelahiran, String speciesHewan, String rasAnjing){
-        super(noPelanggan,namaHewan,warnaHewan,tahunKelahiran,speciesHewan);
+    public Anjing(String noPelanggan, JenisPerawatan jenisPerawatan, String namaHewan, String warnaHewan, int tahunKelahiran, String speciesHewan, String rasAnjing){
+        super(noPelanggan, jenisPerawatan, rasAnjing, namaHewan, warnaHewan, tahunKelahiran, speciesHewan);
         this.rasAnjing = rasAnjing;
     }
 
-    @Override
     public String getRas(){
         return rasAnjing;
     }

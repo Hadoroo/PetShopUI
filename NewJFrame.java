@@ -1,11 +1,16 @@
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.AbstractButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+
+import Hewan.Hewan;
+import Hewan.JenisPerawatan;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -828,26 +833,30 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         setBounds(0, 0, 420, 400);
-        if (jCheckBox1.isSelected()) jenisPerawatan.add(jCheckBox1.getText());
-        if (jCheckBox2.isSelected()) jenisPerawatan.add(jCheckBox2.getText());
-        if (jCheckBox3.isSelected()) jenisPerawatan.add(jCheckBox3.getText());
-        if (jCheckBox4.isSelected()) jenisPerawatan.add(jCheckBox4.getText());
-        if (jCheckBox5.isSelected()) jenisPerawatan.add(jCheckBox5.getText());
-        if (jCheckBox6.isSelected()) jenisPerawatan.add(jCheckBox6.getText());
+        Hewan h = new Hewan();
+        if (jCheckBox1.isSelected()) jenisPerawatan.put(1, new Hewan(h.getPerawatan(JenisPerawatan.SUNTIK_VAKSIN), h.getHargaPerawatan(JenisPerawatan.SUNTIK_VAKSIN)));
+        if (jCheckBox2.isSelected()) jenisPerawatan.put(2, new Hewan(h.getPerawatan(JenisPerawatan.SUNTIK_ANTI_KUTU), h.getHargaPerawatan(JenisPerawatan.SUNTIK_ANTI_KUTU)));
+        if (jCheckBox3.isSelected()) jenisPerawatan.put(3, new Hewan(h.getPerawatan(JenisPerawatan.SUNTIK_SCABIES), h.getHargaPerawatan(JenisPerawatan.SUNTIK_SCABIES)));
+        if (jCheckBox4.isSelected()) jenisPerawatan.put(4, new Hewan(h.getPerawatan(JenisPerawatan.SUNTIK_ANTI_JAMUR_KULIT), h.getHargaPerawatan(JenisPerawatan.SUNTIK_ANTI_JAMUR_KULIT)));
+        if (jCheckBox5.isSelected()) jenisPerawatan.put(5, new Hewan(h.getPerawatan(JenisPerawatan.PEMERIKSAAN_RAWAT_INAP), h.getHargaPerawatan(JenisPerawatan.PEMERIKSAAN_RAWAT_INAP)));
+        if (jCheckBox6.isSelected()) jenisPerawatan.put(6, new Hewan(h.getPerawatan(JenisPerawatan.PEMERIKSAAN_RAWAT_JALAN), h.getHargaPerawatan(JenisPerawatan.PEMERIKSAAN_RAWAT_JALAN)));
         jPanel4.setVisible(false);
-            Hasil jf = new Hasil();
-            jf.jLabel11.setText("001");
-            jf.jLabel12.setText(namaHewan);
-            jf.jLabel13.setText(warnaHewan);
-            jf.jLabel14.setText(tanggalLahir);
-            jf.jLabel15.setText(species);
-            jf.jLabel16.setText(ras);
-            jf.setVisible(true);
-            this.setVisible(false);
-            for (String string : jenisPerawatan) {
-                Hasil.allText += string + "\n";
-            }
-            
+        Hasil jf = new Hasil();
+        jf.jLabel11.setText("001");
+        jf.jLabel12.setText(namaHewan);
+        jf.jLabel13.setText(warnaHewan);
+        jf.jLabel14.setText(tanggalLahir);
+        jf.jLabel15.setText(species);
+        jf.jLabel16.setText(ras);
+        jf.setVisible(true);
+        this.setVisible(false);
+        int totalHarga =0;
+        for (Integer i : jenisPerawatan.keySet()) {
+            Hasil.allText += jenisPerawatan.get(i).namaPerawatan + ": " + jenisPerawatan.get(i).hargaPerawatan + "\n\n";
+            totalHarga += jenisPerawatan.get(i).hargaPerawatan;
+        }   
+
+        Hasil.totalHarga = String.valueOf(totalHarga);
 
 
     }
@@ -855,51 +864,62 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         setBounds(0, 0, 420, 400);
-        if (jCheckBox7.isSelected()) jenisPerawatan.add(jCheckBox7.getText());
-        if (jCheckBox9.isSelected()) jenisPerawatan.add(jCheckBox9.getText());
-        if (jCheckBox10.isSelected()) jenisPerawatan.add(jCheckBox10.getText());
-        if (jCheckBox11.isSelected()) jenisPerawatan.add(jCheckBox11.getText());
+        Hewan h = new Hewan();
+        if (jCheckBox7.isSelected()) jenisPerawatan.put(1, new Hewan(h.getPerawatan(JenisPerawatan.POTONG_RAMBUT), h.getHargaPerawatan(JenisPerawatan.POTONG_RAMBUT)));
+        if (jCheckBox9.isSelected()) jenisPerawatan.put(2, new Hewan(h.getPerawatan(JenisPerawatan.POTONG_KUKU), h.getHargaPerawatan(JenisPerawatan.POTONG_KUKU)));
+        if (jCheckBox10.isSelected()) jenisPerawatan.put(3, new Hewan(h.getPerawatan(JenisPerawatan.PAKET_MANDI), h.getHargaPerawatan(JenisPerawatan.PAKET_MANDI)));
+        if (jCheckBox11.isSelected()) jenisPerawatan.put(4, new Hewan(h.getPerawatan(JenisPerawatan.JASA_PENITIPAN), h.getHargaPerawatan(JenisPerawatan.JASA_PENITIPAN)));
         jPanel4.setVisible(false);
-            Hasil jf = new Hasil();
-            jf.jLabel11.setText("001");
-            jf.jLabel12.setText(namaHewan);
-            jf.jLabel13.setText(warnaHewan);
-            jf.jLabel14.setText(tanggalLahir);
-            jf.jLabel15.setText(species);
-            jf.jLabel16.setText(ras);
-            jf.setVisible(true);
-            this.setVisible(false);
-            for (String string : jenisPerawatan) {
-                Hasil.allText += string + "\n";
-            }
-    }
+        Hasil jf = new Hasil();
+        jf.jLabel11.setText("001");
+        jf.jLabel12.setText(namaHewan);
+        jf.jLabel13.setText(warnaHewan);
+        jf.jLabel14.setText(tanggalLahir);
+        jf.jLabel15.setText(species);
+        jf.jLabel16.setText(ras);
+        jf.setVisible(true);
+        this.setVisible(false);
+        int totalHarga =0;
+        for (Integer i : jenisPerawatan.keySet()) {
+            Hasil.allText += jenisPerawatan.get(i).namaPerawatan + ": " + jenisPerawatan.get(i).hargaPerawatan + "\n\n";
+            totalHarga += jenisPerawatan.get(i).hargaPerawatan;
+        }
+
+        Hasil.totalHarga = String.valueOf(totalHarga);
+
+  }
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         setBounds(0, 0, 420, 400);
-        if (jCheckBox8.isSelected()) jenisPerawatan.add(jCheckBox8.getText());
-        if (jCheckBox12.isSelected()) jenisPerawatan.add(jCheckBox12.getText());
-        if (jCheckBox13.isSelected()) jenisPerawatan.add(jCheckBox13.getText());
-        if (jCheckBox14.isSelected()) jenisPerawatan.add(jCheckBox14.getText());
-        if (jCheckBox15.isSelected()) jenisPerawatan.add(jCheckBox15.getText());
-        if (jCheckBox16.isSelected()) jenisPerawatan.add(jCheckBox16.getText());
-        if (jCheckBox17.isSelected()) jenisPerawatan.add(jCheckBox17.getText());
-        if (jCheckBox18.isSelected()) jenisPerawatan.add(jCheckBox18.getText());
-        if (jCheckBox19.isSelected()) jenisPerawatan.add(jCheckBox19.getText());
-        if (jCheckBox20.isSelected()) jenisPerawatan.add(jCheckBox20.getText());
+        Hewan h = new Hewan();
+        if (jCheckBox8.isSelected()) jenisPerawatan.put(1, new Hewan(h.getPerawatan(JenisPerawatan.SUNTIK_VAKSIN), h.getHargaPerawatan(JenisPerawatan.SUNTIK_VAKSIN)));
+        if (jCheckBox12.isSelected()) jenisPerawatan.put(2, new Hewan(h.getPerawatan(JenisPerawatan.SUNTIK_ANTI_KUTU), h.getHargaPerawatan(JenisPerawatan.SUNTIK_ANTI_KUTU)));
+        if (jCheckBox13.isSelected()) jenisPerawatan.put(3, new Hewan(h.getPerawatan(JenisPerawatan.SUNTIK_SCABIES), h.getHargaPerawatan(JenisPerawatan.SUNTIK_SCABIES)));
+        if (jCheckBox14.isSelected()) jenisPerawatan.put(4, new Hewan(h.getPerawatan(JenisPerawatan.SUNTIK_ANTI_JAMUR_KULIT), h.getHargaPerawatan(JenisPerawatan.SUNTIK_ANTI_JAMUR_KULIT)));
+        if (jCheckBox15.isSelected()) jenisPerawatan.put(5, new Hewan(h.getPerawatan(JenisPerawatan.PEMERIKSAAN_RAWAT_INAP), h.getHargaPerawatan(JenisPerawatan.PEMERIKSAAN_RAWAT_INAP)));
+        if (jCheckBox16.isSelected()) jenisPerawatan.put(6, new Hewan(h.getPerawatan(JenisPerawatan.PEMERIKSAAN_RAWAT_JALAN), h.getHargaPerawatan(JenisPerawatan.PEMERIKSAAN_RAWAT_JALAN)));
+        if (jCheckBox17.isSelected()) jenisPerawatan.put(7, new Hewan(h.getPerawatan(JenisPerawatan.POTONG_KUKU), h.getHargaPerawatan(JenisPerawatan.POTONG_KUKU)));
+        if (jCheckBox18.isSelected()) jenisPerawatan.put(8, new Hewan(h.getPerawatan(JenisPerawatan.PAKET_MANDI), h.getHargaPerawatan(JenisPerawatan.PAKET_MANDI)));
+        if (jCheckBox19.isSelected()) jenisPerawatan.put(9, new Hewan(h.getPerawatan(JenisPerawatan.JASA_PENITIPAN), h.getHargaPerawatan(JenisPerawatan.JASA_PENITIPAN)));
+        if (jCheckBox20.isSelected()) jenisPerawatan.put(10, new Hewan(h.getPerawatan(JenisPerawatan.POTONG_RAMBUT), h.getHargaPerawatan(JenisPerawatan.POTONG_RAMBUT)));
         jPanel4.setVisible(false);
-            Hasil jf = new Hasil();
-            jf.jLabel11.setText("001");
-            jf.jLabel12.setText(namaHewan);
-            jf.jLabel13.setText(warnaHewan);
-            jf.jLabel14.setText(tanggalLahir);
-            jf.jLabel15.setText(species);
-            jf.jLabel16.setText(ras);
-            jf.setVisible(true);
-            this.setVisible(false);
-            for (String string : jenisPerawatan) {
-                Hasil.allText += string + "\n";
-            }
+        Hasil jf = new Hasil();
+        jf.jLabel11.setText("001");
+        jf.jLabel12.setText(namaHewan);
+        jf.jLabel13.setText(warnaHewan);
+        jf.jLabel14.setText(tanggalLahir);
+        jf.jLabel15.setText(species);
+        jf.jLabel16.setText(ras);
+        jf.setVisible(true);
+        this.setVisible(false);
+        int totalHarga =0;
+        for (Integer i : jenisPerawatan.keySet()) {
+            Hasil.allText += jenisPerawatan.get(i).namaPerawatan + ": " + jenisPerawatan.get(i).hargaPerawatan + "\n\n";
+            totalHarga += jenisPerawatan.get(i).hargaPerawatan;
+        }
+
+        Hasil.totalHarga = String.valueOf(totalHarga);
     }
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -923,7 +943,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.setVisible(true);
         jPanel4.setVisible(false);
         jPanel3.setVisible(false);
-        jenisPerawatan.removeAll(jenisPerawatan);
+        jenisPerawatan.clear();
     }                                        
 
     private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -960,7 +980,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.setVisible(true);
         jPanel5.setVisible(false);
         jPanel6.setVisible(false);
-        jenisPerawatan.removeAll(jenisPerawatan);
+        jenisPerawatan.clear();
     }                                        
 
     private void jCheckBox9ActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -1001,7 +1021,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.setVisible(true);
         jPanel7.setVisible(false);
         jPanel8.setVisible(false);
-        jenisPerawatan.removeAll(jenisPerawatan);
+        jenisPerawatan.clear();
     }
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
@@ -1013,7 +1033,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     }  
     
-    public ArrayList<String> jenisPerawatan = new ArrayList<>();
+    public HashMap<Integer, Hewan> jenisPerawatan = new HashMap<>();
     String namaHewan;
     String warnaHewan;
     String tanggalLahir;

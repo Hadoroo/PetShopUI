@@ -7,11 +7,10 @@ public class Kucing extends Hewan{
     }
 
     public Kucing(String noPelanggan, String namaHewan, String warnaHewan, int tahunKelahiran, String speciesHewan, String rasKucing){
-        super(noPelanggan,namaHewan,warnaHewan,tahunKelahiran,speciesHewan);
+        super(noPelanggan, null, rasKucing, namaHewan, warnaHewan, tahunKelahiran, speciesHewan);
         this.rasKucing = rasKucing;
     }
 
-    @Override
     public String getRas(){
         return rasKucing;
     }
