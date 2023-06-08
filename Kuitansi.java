@@ -194,8 +194,8 @@ public class Kuitansi extends javax.swing.JFrame {
         // Close the FileWriter
         
 
-        // Desktop desktop = Desktop.getDesktop();
-        // desktop.open(new File(filePath));
+        Desktop desktop = Desktop.getDesktop();
+        desktop.open(new File(filePath));
     }                                        
 
     /**

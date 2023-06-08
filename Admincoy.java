@@ -3,11 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+
+
 
 import Karyawan.*;
 
@@ -109,7 +113,12 @@ public class Admincoy extends javax.swing.JFrame {
         jMenu3.setText("Daftar Pelanggan");
         jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3MouseClicked(evt);
+                try {
+                    jMenu3MouseClicked(evt);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
         jMenu1.add(jMenu3);
@@ -243,8 +252,12 @@ public class Admincoy extends javax.swing.JFrame {
         // TODO add your handling code here for jMenu2
     }
     
-    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) throws IOException {
         // TODO add your handling code here for jMenu3
+        String filePath = "log.txt";
+        Desktop desktop = Desktop.getDesktop();
+        desktop.open(new File(filePath));
+
     }
 
     private void jMenuKaryawanMouseClicked(java.awt.event.MouseEvent evt) throws IOException {
@@ -283,6 +296,9 @@ public class Admincoy extends javax.swing.JFrame {
 
         // Close the FileWriter
         writer.close();
+
+        Desktop desktop = Desktop.getDesktop();
+        desktop.open(new File(filePath));
     }
 
         
