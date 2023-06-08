@@ -51,6 +51,7 @@ public class Admincoy extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jMenuKaryawan = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +107,14 @@ public class Admincoy extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenu3);
+
+        jMenuKaryawan.setText("Daftar Karyawan");
+        jMenuKaryawan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenu1.add(jMenuKaryawan);
         
         jMenu4.setText("Logout");
         jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -289,6 +298,7 @@ public class Admincoy extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenuKaryawan;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration                   
 }
