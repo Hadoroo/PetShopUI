@@ -855,7 +855,8 @@ public class NewJFrame extends javax.swing.JFrame {
         this.setVisible(false);
         int totalHarga =0;
         for (Integer i : jenisPerawatan.keySet()) {
-            Hasil.allText += jenisPerawatan.get(i).namaPerawatan + ": " + jenisPerawatan.get(i).hargaPerawatan + "\n";
+            Hasil.Text += jenisPerawatan.get(i).namaPerawatan + "\n";
+            Hasil.HargaText += "\t" + jenisPerawatan.get(i).hargaPerawatan + "\n";
             totalHarga += jenisPerawatan.get(i).hargaPerawatan;
         }   
 
@@ -884,7 +885,8 @@ public class NewJFrame extends javax.swing.JFrame {
         this.setVisible(false);
         int totalHarga =0;
         for (Integer i : jenisPerawatan.keySet()) {
-            Hasil.allText += jenisPerawatan.get(i).namaPerawatan + ": " + jenisPerawatan.get(i).hargaPerawatan + "\n";
+            Hasil.Text += jenisPerawatan.get(i).namaPerawatan + "\n";
+            Hasil.HargaText += "\t" + jenisPerawatan.get(i).hargaPerawatan + "\n";
             totalHarga += jenisPerawatan.get(i).hargaPerawatan;
         }
 
@@ -918,7 +920,8 @@ public class NewJFrame extends javax.swing.JFrame {
         this.setVisible(false);
         int totalHarga =0;
         for (Integer i : jenisPerawatan.keySet()) {
-            Hasil.allText += jenisPerawatan.get(i).namaPerawatan + ": " + jenisPerawatan.get(i).hargaPerawatan + "\n";
+            Hasil.Text += jenisPerawatan.get(i).namaPerawatan + "\n";
+            Hasil.HargaText += "\t" + jenisPerawatan.get(i).hargaPerawatan + "\n";
             totalHarga += jenisPerawatan.get(i).hargaPerawatan;
         }
 
