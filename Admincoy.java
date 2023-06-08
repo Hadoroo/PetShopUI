@@ -234,6 +234,7 @@ public class Admincoy extends javax.swing.JFrame {
         // TODO add your handling code here for jMenu2
         NewJFrame lg = new NewJFrame();
         Hasil.Text = "";
+        Hasil.HargaText = "";
         lg.setVisible(true);
         this.setVisible(false);
     }

@@ -117,3 +117,79 @@ Jenis Perawatan	: Potong Kuku
 Harga Perawatan	: 100000
 
 =======================================
+Nama Hewan		: qweqwe
+Warna Hewan		: qweqwe
+Tanggal Lahir	: 5 April 2002
+Species			: Kucing
+Ras				: qwe
+
+Jenis Perawatan	: Potong Kuku
+Harga Perawatan	: 100000
+
+Jenis Perawatan	: Paket Mandi
+Harga Perawatan	: 150000
+
+=======================================
+Nama Hewan		: rterty
+Warna Hewan		: ert
+Tanggal Lahir	: 2 Maret 2006
+Species			: Kucing
+Ras				: werwer
+
+Jenis Perawatan	: Suntik Anti Kutu
+Harga Perawatan	: 150000
+
+Jenis Perawatan	: Suntik Anti Jamur Kulit
+Harga Perawatan	: 250000
+
+Jenis Perawatan	: Pemeriksaan Rawat Inap
+Harga Perawatan	: 1000000
+
+Jenis Perawatan	: Pemeriksaan Rawat Jalan
+Harga Perawatan	: 500000
+
+Jenis Perawatan	: Potong Kuku
+Harga Perawatan	: 100000
+
+Jenis Perawatan	: Jasa Penitipan
+Harga Perawatan	: 500000
+
+Jenis Perawatan	: Potong Rambut
+Harga Perawatan	: 200000
+
+=======================================
+Nama Hewan		: 123qwe
+Warna Hewan		: qwe
+Tanggal Lahir	: ... ... ...
+Species			: ...
+Ras				: qwe
+
+Jenis Perawatan	: Suntik Vaksin
+Harga Perawatan	: 100000
+
+Jenis Perawatan	: Pemeriksaan Rawat Inap
+Harga Perawatan	: 1000000
+
+Jenis Perawatan	: Jasa Penitipan
+Harga Perawatan	: 500000
+
+=======================================
+Nama Hewan		: 
+Warna Hewan		: 
+Tanggal Lahir	: ... ... ...
+Species			: ...
+Ras				: 
+
+Jenis Perawatan	: Potong Rambut
+Harga Perawatan	: 200000
+
+Jenis Perawatan	: Potong Kuku
+Harga Perawatan	: 100000
+
+Jenis Perawatan	: Paket Mandi
+Harga Perawatan	: 150000
+
+Jenis Perawatan	: Jasa Penitipan
+Harga Perawatan	: 500000
+
+=======================================
