@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
+
+import Karyawan.*;
 
 /**
  *
@@ -111,7 +116,12 @@ public class Admincoy extends javax.swing.JFrame {
         jMenuKaryawan.setText("Daftar Karyawan");
         jMenuKaryawan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3MouseClicked(evt);
+                try {
+                    jMenuKaryawanMouseClicked(evt);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
         jMenu1.add(jMenuKaryawan);
@@ -232,6 +242,13 @@ public class Admincoy extends javax.swing.JFrame {
     
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here for jMenu3
+    }
+
+    private void jMenuKaryawanMouseClicked(java.awt.event.MouseEvent evt) throws IOException {
+        // TODO add your handling code here for jMenu3
+        Map<String, Accounts> daftarKaryawan = Login.loadAccountsFromFile();
+        
+        
     }
     
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {
