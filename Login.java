@@ -190,7 +190,7 @@ public class Login extends javax.swing.JFrame {
         return null; // Account not found
     }
     
-    private Map<String, Accounts> loadAccountsFromFile() throws IOException {
+    public static Map<String, Accounts> loadAccountsFromFile() throws IOException {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Accounts.dat"))) {
             return (Map<String, Accounts>) ois.readObject();
         } catch (ClassNotFoundException e) {

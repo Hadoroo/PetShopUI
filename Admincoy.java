@@ -3,7 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
+
+import Karyawan.*;
 
 /**
  *
@@ -51,6 +57,7 @@ public class Admincoy extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jMenuKaryawan = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +113,19 @@ public class Admincoy extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenu3);
+
+        jMenuKaryawan.setText("Daftar Karyawan");
+        jMenuKaryawan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                try {
+                    jMenuKaryawanMouseClicked(evt);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
+        jMenu1.add(jMenuKaryawan);
         
         jMenu4.setText("Logout");
         jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -224,6 +244,47 @@ public class Admincoy extends javax.swing.JFrame {
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here for jMenu3
     }
+
+    private void jMenuKaryawanMouseClicked(java.awt.event.MouseEvent evt) throws IOException {
+        // TODO add your handling code here for jMenu3
+        Map<String, Accounts> daftarKaryawan = Login.loadAccountsFromFile();
+
+    // Specify the file path where you want to save the data
+    String filePath = "Daftar Karyawan.txt";
+
+    // Create a FileWriter to write data to the file
+    FileWriter writer = new FileWriter(filePath);
+
+    // Iterate over the map entries
+    for (Map.Entry<String, Accounts> entry : daftarKaryawan.entrySet()) {
+        String key = entry.getKey();
+        Accounts accounts = entry.getValue();
+
+        // Write the data to the file
+        writer.write("Username: " + key + "\n");
+        writer.write("Nama:\t" + accounts.getKaryawan().getNama() + "\n");
+        writer.write("Alamat:\t" + accounts.getKaryawan().getAlamat() + "\n");
+        writer.write("Telepon:\t" + accounts.getKaryawan().getTelepon() + "\n");
+        writer.write("Jenis Kelamin:\t" + accounts.getKaryawan().getJenisKelamin() + "\n");
+        writer.write("Kategori:\t" + accounts.getKaryawan().getKategoriKaryawan() + "\n");
+        writer.write("Gaji:\t" + df.format(accounts.getKaryawan().getGaji()) + "\n");
+        if (!(accounts.getKaryawan() instanceof Admin)) {
+            writer.write("Biaya:\t" + df.format(accounts.getKaryawan().getBiaya()) + "\n");
+        }
+        
+
+        // Add any additional formatting or data you want to write
+        // ...
+
+        writer.write("\n"); // Add a newline after each entry
+    }
+
+    // Close the FileWriter
+    writer.close();
+}
+
+        
+    }
     
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here for jMenu4
@@ -289,6 +350,7 @@ public class Admincoy extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenuKaryawan;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration                   
 }
