@@ -2,6 +2,7 @@
 
 import java.util.ArrayList;
 
+import javax.swing.AbstractButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -451,6 +452,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButton6.setText("Selesai");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Keluar");
 
@@ -579,6 +585,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButton9.setText("Selesai");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("Keluar");
 
@@ -824,8 +835,6 @@ public class NewJFrame extends javax.swing.JFrame {
         if (jCheckBox5.isSelected()) jenisPerawatan.add(jCheckBox5.getText());
         if (jCheckBox6.isSelected()) jenisPerawatan.add(jCheckBox6.getText());
         jPanel4.setVisible(false);
-            // MainMenu mainMenu = new MainMenu();
-            // mainMenu.setVisible(true);
             Hasil jf = new Hasil();
             jf.jLabel11.setText("001");
             jf.jLabel12.setText(namaHewan);
@@ -833,9 +842,53 @@ public class NewJFrame extends javax.swing.JFrame {
             jf.jLabel14.setText(tanggalLahir);
             jf.jLabel15.setText(species);
             jf.jLabel16.setText(ras);
-            jf.jLabel17.setText((String)jComboBox7.getSelectedItem());
-            jf.jLabel18.setText("a");
-            jf.jLabel19.setText("0000");
+            jf.setVisible(true);
+            this.setVisible(false);
+            Kuitansi kw = new Kuitansi();
+            kw.jTextArea1.setText(namaHewan + "\n");
+
+    }
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        setBounds(0, 0, 420, 400);
+        if (jCheckBox7.isSelected()) jenisPerawatan.add(jCheckBox7.getText());
+        if (jCheckBox9.isSelected()) jenisPerawatan.add(jCheckBox9.getText());
+        if (jCheckBox10.isSelected()) jenisPerawatan.add(jCheckBox10.getText());
+        if (jCheckBox11.isSelected()) jenisPerawatan.add(jCheckBox11.getText());
+        jPanel4.setVisible(false);
+            Hasil jf = new Hasil();
+            jf.jLabel11.setText("001");
+            jf.jLabel12.setText(namaHewan);
+            jf.jLabel13.setText(warnaHewan);
+            jf.jLabel14.setText(tanggalLahir);
+            jf.jLabel15.setText(species);
+            jf.jLabel16.setText(ras);
+            jf.setVisible(true);
+            this.setVisible(false);
+    }
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        setBounds(0, 0, 420, 400);
+        if (jCheckBox8.isSelected()) jenisPerawatan.add(jCheckBox8.getText());
+        if (jCheckBox12.isSelected()) jenisPerawatan.add(jCheckBox12.getText());
+        if (jCheckBox13.isSelected()) jenisPerawatan.add(jCheckBox13.getText());
+        if (jCheckBox14.isSelected()) jenisPerawatan.add(jCheckBox14.getText());
+        if (jCheckBox15.isSelected()) jenisPerawatan.add(jCheckBox15.getText());
+        if (jCheckBox16.isSelected()) jenisPerawatan.add(jCheckBox16.getText());
+        if (jCheckBox17.isSelected()) jenisPerawatan.add(jCheckBox17.getText());
+        if (jCheckBox18.isSelected()) jenisPerawatan.add(jCheckBox18.getText());
+        if (jCheckBox19.isSelected()) jenisPerawatan.add(jCheckBox19.getText());
+        if (jCheckBox20.isSelected()) jenisPerawatan.add(jCheckBox20.getText());
+        jPanel4.setVisible(false);
+            Hasil jf = new Hasil();
+            jf.jLabel11.setText("001");
+            jf.jLabel12.setText(namaHewan);
+            jf.jLabel13.setText(warnaHewan);
+            jf.jLabel14.setText(tanggalLahir);
+            jf.jLabel15.setText(species);
+            jf.jLabel16.setText(ras);
             jf.setVisible(true);
             this.setVisible(false);
     }
