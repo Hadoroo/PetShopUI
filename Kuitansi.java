@@ -175,6 +175,8 @@ public class Kuitansi extends javax.swing.JFrame {
 
         writer.close();
 
+        NewJFrame.jenisPerawatan.clear();
+
         new Admincoy(Login.accountBck).setVisible(true);
         this.setVisible(false);
         

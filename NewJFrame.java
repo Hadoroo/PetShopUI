@@ -1076,6 +1076,7 @@ public class NewJFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NewJFrame().setVisible(true);
+                jenisPerawatan.clear();
             }
         });
     }

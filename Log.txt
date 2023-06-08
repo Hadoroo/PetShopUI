@@ -33,3 +33,87 @@ Jenis Perawatan	: Pemeriksaan Rawat Jalan
 Harga Perawatan	: 500000
 
 =======================================
+Nama Hewan	: qwe
+Warna Hewan	: qwe
+Tanggal Lahir	: ... ... ...
+Species	: ...
+Ras	: 
+
+Jenis Perawatan	: Suntik Vaksin
+Harga Perawatan	: 100000
+
+Jenis Perawatan	: Pemeriksaan Rawat Jalan
+Harga Perawatan	: 500000
+
+=======================================
+Nama Hewan	: qweqasd
+Warna Hewan	: qwe
+Tanggal Lahir	: ... ... ...
+Species	: ...
+Ras	: 123
+
+Jenis Perawatan	: Suntik Vaksin
+Harga Perawatan	: 100000
+
+Jenis Perawatan	: Potong Kuku
+Harga Perawatan	: 100000
+
+Jenis Perawatan	: Paket Mandi
+Harga Perawatan	: 150000
+
+Jenis Perawatan	: Pemeriksaan Rawat Jalan
+Harga Perawatan	: 500000
+
+=======================================
+Nama Hewan	: qwerqwet
+Warna Hewan	: 
+Tanggal Lahir	: ... ... ...
+Species	: ...
+Ras	: q
+
+Jenis Perawatan	: Jasa Penitipan
+Harga Perawatan	: 500000
+
+=======================================
+Nama Hewan	: wqerqwer
+Warna Hewan	: 
+Tanggal Lahir	: ... ... ...
+Species	: ...
+Ras	: qwerqwer
+
+Jenis Perawatan	: Suntik Vaksin
+Harga Perawatan	: 100000
+
+Jenis Perawatan	: Jasa Penitipan
+Harga Perawatan	: 500000
+
+Jenis Perawatan	: Pemeriksaan Rawat Jalan
+Harga Perawatan	: 500000
+
+=======================================
+Nama Hewan	: qwe12
+Warna Hewan	: 
+Tanggal Lahir	: ... ... ...
+Species	: ...
+Ras	: 
+
+Jenis Perawatan	: Suntik Vaksin
+Harga Perawatan	: 100000
+
+Jenis Perawatan	: Suntik Anti Kutu
+Harga Perawatan	: 150000
+
+Jenis Perawatan	: Suntik Scabies
+Harga Perawatan	: 200000
+
+=======================================
+Nama Hewan	: 
+Warna Hewan	: 
+Tanggal Lahir	: ... ... ...
+Species	: ...
+Ras	: 
+
+Jenis Perawatan	: Potong Kuku
+Harga Perawatan	: 100000
+
+=======================================
