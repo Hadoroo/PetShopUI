@@ -951,6 +951,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.setVisible(true);
         jPanel5.setVisible(false);
         jPanel6.setVisible(false);
+        jenisPerawatan.removeAll(jenisPerawatan);
     }                                        
 
     private void jCheckBox9ActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -991,6 +992,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.setVisible(true);
         jPanel7.setVisible(false);
         jPanel8.setVisible(false);
+        jenisPerawatan.removeAll(jenisPerawatan);
     }
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
