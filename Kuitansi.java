@@ -164,11 +164,11 @@ public class Kuitansi extends javax.swing.JFrame {
         // Create a FileWriter to write data to the file
         FileWriter writer = new FileWriter(filePath, true);
 
-        writer.write("Nama Hewan\t: " + NewJFrame.namaHewan  + "\n");
-        writer.write("Warna Hewan\t: " + NewJFrame.warnaHewan  + "\n");
+        writer.write("Nama Hewan\t\t: " + NewJFrame.namaHewan  + "\n");
+        writer.write("Warna Hewan\t\t: " + NewJFrame.warnaHewan  + "\n");
         writer.write("Tanggal Lahir\t: " + NewJFrame.tanggalLahir  + "\n");
-        writer.write("Species\t: " + NewJFrame.species  + "\n");
-        writer.write("Ras\t: " + NewJFrame.ras  + "\n\n");
+        writer.write("Species\t\t\t: " + NewJFrame.species  + "\n");
+        writer.write("Ras\t\t\t\t: " + NewJFrame.ras  + "\n\n");
 
         // Iterate over the map entries for choosen perawatan
         for (Map.Entry<Integer, Hewan> entry : NewJFrame.jenisPerawatan.entrySet()) {
