@@ -182,7 +182,7 @@ public class Hasil extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         Kuitansi kw = new Kuitansi();
-        
+        kw.jTextArea1.setText(allText);
         kw.setVisible(true);
         this.setVisible(false);
     }                                        
@@ -221,6 +221,8 @@ public class Hasil extends javax.swing.JFrame {
             }
         });
     }
+
+    public static String allText ="";
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;

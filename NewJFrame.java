@@ -844,8 +844,11 @@ public class NewJFrame extends javax.swing.JFrame {
             jf.jLabel16.setText(ras);
             jf.setVisible(true);
             this.setVisible(false);
-            Kuitansi kw = new Kuitansi();
-            kw.jTextArea1.setText(namaHewan + "\n");
+            for (String string : jenisPerawatan) {
+                Hasil.allText += string + "\n";
+            }
+            
+
 
     }
 
@@ -866,6 +869,9 @@ public class NewJFrame extends javax.swing.JFrame {
             jf.jLabel16.setText(ras);
             jf.setVisible(true);
             this.setVisible(false);
+            for (String string : jenisPerawatan) {
+                Hasil.allText += string + "\n";
+            }
     }
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -891,6 +897,9 @@ public class NewJFrame extends javax.swing.JFrame {
             jf.jLabel16.setText(ras);
             jf.setVisible(true);
             this.setVisible(false);
+            for (String string : jenisPerawatan) {
+                Hasil.allText += string + "\n";
+            }
     }
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {                                           
