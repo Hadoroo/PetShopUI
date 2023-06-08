@@ -1037,11 +1037,11 @@ public class NewJFrame extends javax.swing.JFrame {
     }  
     
     public static HashMap<Integer, Hewan> jenisPerawatan = new HashMap<>();
-    String namaHewan;
-    String warnaHewan;
-    String tanggalLahir;
-    String species;
-    String ras;
+    public static String namaHewan;
+    public static String warnaHewan;
+    public static String tanggalLahir;
+    public static String species;
+    public static String ras;
     /**
      * @param args the command line arguments
      */

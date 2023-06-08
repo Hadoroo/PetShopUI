@@ -1,6 +1,35 @@
+Nama Hewan	: sadasd
+Warna Hewan	: sadasdsad
+Tanggal Lahir	: 2 Maret 2003
+Species	: Kucing
+Ras	: asdsad
+
+Jenis Perawatan	: Suntik Vaksin
+Harga Perawatan	: 100000
+
+Jenis Perawatan	: Suntik Anti Jamur Kulit
+Harga Perawatan	: 250000
+
+=======================================
+Nama Hewan	: dsada
+Warna Hewan	: sadasdd
+Tanggal Lahir	: ... ... ...
+Species	: ...
+Ras	: 
+
+Jenis Perawatan	: Suntik Vaksin
+Harga Perawatan	: 100000
+
+Jenis Perawatan	: Suntik Scabies
+Harga Perawatan	: 200000
+
+Jenis Perawatan	: Suntik Anti Jamur Kulit
+Harga Perawatan	: 250000
+
 Jenis Perawatan	: Pemeriksaan Rawat Inap
 Harga Perawatan	: 1000000
 
 Jenis Perawatan	: Pemeriksaan Rawat Jalan
 Harga Perawatan	: 500000
 
+=======================================

@@ -13,6 +13,7 @@ import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -151,9 +152,15 @@ public class Kuitansi extends javax.swing.JFrame {
         String filePath = "Log.txt";
 
         // Create a FileWriter to write data to the file
-        FileWriter writer = new FileWriter(filePath);
+        FileWriter writer = new FileWriter(filePath, true);
 
-        // Iterate over the map entries
+        writer.write("Nama Hewan\t: " + NewJFrame.namaHewan  + "\n");
+        writer.write("Warna Hewan\t: " + NewJFrame.warnaHewan  + "\n");
+        writer.write("Tanggal Lahir\t: " + NewJFrame.tanggalLahir  + "\n");
+        writer.write("Species\t: " + NewJFrame.species  + "\n");
+        writer.write("Ras\t: " + NewJFrame.ras  + "\n\n");
+
+        // Iterate over the map entries for choosen perawatan
         for (Map.Entry<Integer, Hewan> entry : NewJFrame.jenisPerawatan.entrySet()) {
             int key = entry.getKey();
             Hewan data = entry.getValue();
@@ -163,6 +170,8 @@ public class Kuitansi extends javax.swing.JFrame {
             // Add a newline after each entry
             writer.write("\n");
         }
+
+        writer.append("=======================================\n");
 
         writer.close();
 
