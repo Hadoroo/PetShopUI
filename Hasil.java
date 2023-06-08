@@ -182,7 +182,8 @@ public class Hasil extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         Kuitansi kw = new Kuitansi();
-        kw.jTextArea1.setText(allText);
+        kw.jTextArea1.setText(Text);
+        kw.jTextArea2.setText(HargaText);
         kw.jLabel3.setText(totalHarga);
         kw.setVisible(true);
         this.setVisible(false);
@@ -223,7 +224,8 @@ public class Hasil extends javax.swing.JFrame {
         });
     }
 
-    public static String allText ="";
+    public static String Text ="";
+    public static String HargaText ="";
     public static String totalHarga = "0";
 
     // Variables declaration - do not modify                     
