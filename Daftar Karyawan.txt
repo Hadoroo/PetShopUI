@@ -1,0 +1,34 @@
+Username: Putra
+Nama		: Putra
+Alamat		: Solo
+Telepon		: 087
+Jenis Kelamin	: Laki-Laki
+Kategori	: Admin
+Gaji		: Rp50.00
+
+Username: admin
+Nama		: admin
+Alamat		: isekai
+Telepon		: 911
+Jenis Kelamin	: Laki-Laki
+Kategori	: Admin
+Gaji		: Rp0.00
+
+Username: Gustav
+Nama		: Gustav
+Alamat		: Nganjuk
+Telepon		: 085236055139
+Jenis Kelamin	: Laki-Laki
+Kategori	: Dokter Hewan
+Gaji		: Rp10,000,000.00
+Biaya		: Rp250,000.00
+
+Username: qwe
+Nama		: qwe
+Alamat		: qwe
+Telepon		: qwe
+Jenis Kelamin	: Laki-Laki
+Kategori	: Dokter Hewan
+Gaji		: Rp1,000.00
+Biaya		: Rp1,000.00
+

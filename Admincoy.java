@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -249,41 +251,37 @@ public class Admincoy extends javax.swing.JFrame {
         // TODO add your handling code here for jMenu3
         Map<String, Accounts> daftarKaryawan = Login.loadAccountsFromFile();
 
-    // Specify the file path where you want to save the data
-    String filePath = "Daftar Karyawan.txt";
+        // Specify the file path where you want to save the data
+        String filePath = "Daftar Karyawan.txt";
 
-    // Create a FileWriter to write data to the file
-    FileWriter writer = new FileWriter(filePath);
+        // Create a FileWriter to write data to the file
+        FileWriter writer = new FileWriter(filePath);
 
-    // Iterate over the map entries
-    for (Map.Entry<String, Accounts> entry : daftarKaryawan.entrySet()) {
-        String key = entry.getKey();
-        Accounts accounts = entry.getValue();
+        // Iterate over the map entries
+        for (Map.Entry<String, Accounts> entry : daftarKaryawan.entrySet()) {
+            String key = entry.getKey();
+            Accounts accounts = entry.getValue();
 
-        // Write the data to the file
-        writer.write("Username: " + key + "\n");
-        writer.write("Nama:\t" + accounts.getKaryawan().getNama() + "\n");
-        writer.write("Alamat:\t" + accounts.getKaryawan().getAlamat() + "\n");
-        writer.write("Telepon:\t" + accounts.getKaryawan().getTelepon() + "\n");
-        writer.write("Jenis Kelamin:\t" + accounts.getKaryawan().getJenisKelamin() + "\n");
-        writer.write("Kategori:\t" + accounts.getKaryawan().getKategoriKaryawan() + "\n");
-        writer.write("Gaji:\t" + df.format(accounts.getKaryawan().getGaji()) + "\n");
-        if (!(accounts.getKaryawan() instanceof Admin)) {
-            writer.write("Biaya:\t" + df.format(accounts.getKaryawan().getBiaya()) + "\n");
+            // Write the data to the file
+            writer.write("Username: " + key + "\n");
+            writer.write("Nama\t\t: " + accounts.getKaryawan().getNama() + "\n");
+            writer.write("Alamat\t\t: " + accounts.getKaryawan().getAlamat() + "\n");
+            writer.write("Telepon\t\t: " + accounts.getKaryawan().getTelepon() + "\n");
+            writer.write("Jenis Kelamin\t: " + accounts.getKaryawan().getJenisKelamin() + "\n");
+            writer.write("Kategori\t: " + accounts.getKaryawan().getKategoriKaryawan() + "\n");
+            writer.write("Gaji\t\t: " + df.format(accounts.getKaryawan().getGaji()) + "\n");
+            if (!(accounts.getKaryawan() instanceof Admin)) {
+                writer.write("Biaya\t\t: " + df.format(accounts.getKaryawan().getBiaya()) + "\n");
+            }
+
+            writer.write("\n"); // Add a newline after each entry
         }
-        
 
-        // Add any additional formatting or data you want to write
-        // ...
+        // Close the FileWriter
+        writer.close();
 
-        writer.write("\n"); // Add a newline after each entry
-    }
-
-    // Close the FileWriter
-    writer.close();
-}
-
-        
+        Desktop desktop = Desktop.getDesktop();
+        desktop.open(new File(filePath));
     }
     
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {
