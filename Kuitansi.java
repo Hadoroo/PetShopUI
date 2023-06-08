@@ -5,10 +5,21 @@
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+
+import Hewan.Hewan;
+import Hewan.JenisPerawatan;
+
 import java.awt.*;
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 public class Kuitansi extends javax.swing.JFrame {
-
+    public DecimalFormat df = new DecimalFormat("Rp#,##0.00");
     /**
      * Creates new form java
      */
@@ -27,6 +38,7 @@ public class Kuitansi extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jTextArea1 = new javax.swing.JTextArea();
+        jTextArea2 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -59,7 +71,12 @@ public class Kuitansi extends javax.swing.JFrame {
         jButton1.setText("Simpan");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                try {
+                    jButton1ActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 
@@ -125,9 +142,38 @@ public class Kuitansi extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>                        
+    
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                         
         // TODO add your handling code here:
+
+        // Specify the file path where you want to save the data
+        String filePath = "Log.txt";
+
+        // Create a FileWriter to write data to the file
+        FileWriter writer = new FileWriter(filePath);
+
+        // Iterate over the map entries
+        for (Map.Entry<Integer, Hewan> entry : NewJFrame.jenisPerawatan.entrySet()) {
+            int key = entry.getKey();
+            Hewan data = entry.getValue();
+            // Write the data to the file
+            writer.write("Jenis Perawatan\t: " + data.namaPerawatan + "\n");
+            writer.write("Harga Perawatan\t: " + data.hargaPerawatan + "\n");
+            // Add a newline after each entry
+            writer.write("\n");
+        }
+
+        writer.close();
+
+        new Admincoy(Login.accountBck).setVisible(true);
+        this.setVisible(false);
+        
+        // Close the FileWriter
+        
+
+        // Desktop desktop = Desktop.getDesktop();
+        // desktop.open(new File(filePath));
     }                                        
 
     /**
@@ -175,5 +221,6 @@ public class Kuitansi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     javax.swing.JTextArea jTextArea1;
-    // End of variables declaration                   
+    javax.swing.JTextArea jTextArea2;
+    // End of variables declaration2                  
 }

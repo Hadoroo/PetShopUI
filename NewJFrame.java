@@ -1,5 +1,6 @@
 
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +24,7 @@ import Hewan.JenisPerawatan;
  */
 public class NewJFrame extends javax.swing.JFrame {
 
+    public DecimalFormat rupiah = new DecimalFormat("Rp###,###.00");
     /**
      * Creates new form NewJFrame
      */
@@ -42,6 +44,7 @@ public class NewJFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
+        
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
@@ -852,7 +855,7 @@ public class NewJFrame extends javax.swing.JFrame {
         this.setVisible(false);
         int totalHarga =0;
         for (Integer i : jenisPerawatan.keySet()) {
-            Hasil.allText += jenisPerawatan.get(i).namaPerawatan + ": " + jenisPerawatan.get(i).hargaPerawatan + "\n\n";
+            Hasil.allText += jenisPerawatan.get(i).namaPerawatan + ": " + jenisPerawatan.get(i).hargaPerawatan + "\n";
             totalHarga += jenisPerawatan.get(i).hargaPerawatan;
         }   
 
@@ -881,7 +884,7 @@ public class NewJFrame extends javax.swing.JFrame {
         this.setVisible(false);
         int totalHarga =0;
         for (Integer i : jenisPerawatan.keySet()) {
-            Hasil.allText += jenisPerawatan.get(i).namaPerawatan + ": " + jenisPerawatan.get(i).hargaPerawatan + "\n\n";
+            Hasil.allText += jenisPerawatan.get(i).namaPerawatan + ": " + jenisPerawatan.get(i).hargaPerawatan + "\n";
             totalHarga += jenisPerawatan.get(i).hargaPerawatan;
         }
 
@@ -915,7 +918,7 @@ public class NewJFrame extends javax.swing.JFrame {
         this.setVisible(false);
         int totalHarga =0;
         for (Integer i : jenisPerawatan.keySet()) {
-            Hasil.allText += jenisPerawatan.get(i).namaPerawatan + ": " + jenisPerawatan.get(i).hargaPerawatan + "\n\n";
+            Hasil.allText += jenisPerawatan.get(i).namaPerawatan + ": " + jenisPerawatan.get(i).hargaPerawatan + "\n";
             totalHarga += jenisPerawatan.get(i).hargaPerawatan;
         }
 
@@ -1033,7 +1036,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     }  
     
-    public HashMap<Integer, Hewan> jenisPerawatan = new HashMap<>();
+    public static HashMap<Integer, Hewan> jenisPerawatan = new HashMap<>();
     String namaHewan;
     String warnaHewan;
     String tanggalLahir;

@@ -153,7 +153,6 @@ public class Login extends javax.swing.JFrame {
     
         try {
             Accounts account = getAccounts(username, password);
-    
             if (account != null) {
                 // Username and password are correct
                 JOptionPane.showMessageDialog(this, "Login Successful!");
@@ -161,6 +160,10 @@ public class Login extends javax.swing.JFrame {
                     Admincoy admin = new Admincoy(account);
                     admin.setVisible(true);
                     this.setVisible(false);
+
+                    uName = username;
+                    pwd = password;
+                    accountBck = getAccounts(uName, pwd);
                 } else if (account.getKaryawan() instanceof DokterHewan || account.getKaryawan() instanceof Groomer) {
                     DokterandGroomer DnG = new DokterandGroomer(account);
                     DnG.setVisible(true);
@@ -247,6 +250,10 @@ public class Login extends javax.swing.JFrame {
         });
     }
 
+    
+    public static String uName = "";
+    public static String pwd = "";
+    public static Accounts accountBck;
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

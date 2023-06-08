@@ -1,0 +1,6 @@
+Jenis Perawatan	: Pemeriksaan Rawat Inap
+Harga Perawatan	: 1000000
+
+Jenis Perawatan	: Pemeriksaan Rawat Jalan
+Harga Perawatan	: 500000
+
