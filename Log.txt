@@ -193,3 +193,19 @@ Jenis Perawatan	: Jasa Penitipan
 Harga Perawatan	: 500000
 
 =======================================
+Nama Hewan		: Sumanto
+Warna Hewan		: sdfwedwf
+Tanggal Lahir	: 3 April 2003
+Species			: Kucing
+Ras				: wqdwqd
+
+Jenis Perawatan	: Potong Rambut
+Harga Perawatan	: 200000
+
+Jenis Perawatan	: Potong Kuku
+Harga Perawatan	: 100000
+
+Jenis Perawatan	: Jasa Penitipan
+Harga Perawatan	: 500000
+
+=======================================

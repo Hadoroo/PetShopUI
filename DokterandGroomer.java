@@ -8,7 +8,12 @@
  * @author win11
  */
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.text.DecimalFormat;
+
+import javax.swing.JOptionPane;
 public class DokterandGroomer extends javax.swing.JFrame {
     Accounts account;
     public DecimalFormat df = new DecimalFormat("Rp#,##0.00");
@@ -53,7 +58,6 @@ public class DokterandGroomer extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
         jLabel16.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
@@ -191,14 +195,6 @@ public class DokterandGroomer extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenu2);
-        
-        jMenu3.setText("Daftar Pasien");
-        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3MouseClicked(evt);
-            }
-        });
-        jMenu1.add(jMenu3);
 
         jMenu4.setText("Log Out");
         jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,10 +231,14 @@ public class DokterandGroomer extends javax.swing.JFrame {
          
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {                                       
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Absensi Berhasil!");
     }                 
         
-    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {                                       
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) throws IOException {                                       
         // TODO add your handling code here:
+        String filePath = "Log.txt";
+        Desktop desktop = Desktop.getDesktop();
+        desktop.open(new File(filePath));
     }                 
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {
@@ -306,7 +306,6 @@ public class DokterandGroomer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;

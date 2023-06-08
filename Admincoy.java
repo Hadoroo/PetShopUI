@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-
+import javax.swing.JOptionPane;
 
 import Karyawan.*;
 
@@ -250,11 +250,12 @@ public class Admincoy extends javax.swing.JFrame {
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here for jMenu2
+        JOptionPane.showMessageDialog(this, "Absensi Berhasil!");
     }
     
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) throws IOException {
         // TODO add your handling code here for jMenu3
-        String filePath = "log.txt";
+        String filePath = "Log.txt";
         Desktop desktop = Desktop.getDesktop();
         desktop.open(new File(filePath));
 
