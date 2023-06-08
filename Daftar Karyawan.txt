@@ -6,6 +6,15 @@ Jenis Kelamin	: Laki-Laki
 Kategori	: Admin
 Gaji		: Rp50.00
 
+Username: budi
+Nama		: Budi
+Alamat		: jl
+Telepon		: 076
+Jenis Kelamin	: Perempuan
+Kategori	: Dokter Hewan
+Gaji		: Rp1,000.00
+Biaya		: Rp2,000.00
+
 Username: admin
 Nama		: admin
 Alamat		: isekai
