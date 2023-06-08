@@ -233,7 +233,7 @@ public class Admincoy extends javax.swing.JFrame {
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here for jMenu2
         NewJFrame lg = new NewJFrame();
-        Hasil.allText = "";
+        Hasil.Text = "";
         lg.setVisible(true);
         this.setVisible(false);
     }
