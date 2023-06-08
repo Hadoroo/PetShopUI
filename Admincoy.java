@@ -118,6 +118,11 @@ public class Admincoy extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu5.setText("Transaksi");
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -204,6 +209,13 @@ public class Admincoy extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>                        
+
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here for jMenu2
+        NewJFrame lg = new NewJFrame();
+        lg.setVisible(true);
+        this.setVisible(false);
+    }
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here for jMenu2
